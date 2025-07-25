@@ -1,48 +1,38 @@
-import os
 from dotenv import load_dotenv
-from src.agents.weather_agent import weather_agent
-from src.agents.chef_agent import chef_agent
-from src.agents.code_generator_agent import code_generator_agent
+from strands import Agent
+from strands.models import BedrockModel
+from src.tools.chef_tool import chef_assistant
+from src.tools.weather_tool import weather_assistant
+from src.tools.code_generator_tool import code_generator_assistant
 
 load_dotenv()
 
 
 def main():
-    # weather agent
-    weather_agent_func()
-
-    # chef agent
-    chef_agent_func()
-
-    # code generator agent
-    code_generator_agent_func()
-
-
-def weather_agent_func():
-    OPEN_WEATHER_API_KEY = os.getenv("OPEN_WEATHER_API_KEY")
-
-    weather_agent_http_request_response = weather_agent.tool.http_request(
-        method="GET",
-        url=f"https://api.openweathermap.org/data/2.5/weather?q=Shenzhen&appid={OPEN_WEATHER_API_KEY}"
+    bedrock_model = BedrockModel(
+        model_id="us.amazon.nova-lite-v1:0",
+        region_name="us-east-1",
+        temperature=0.3,
     )
-    print(
-        f"weather_agent_http_request_response = {weather_agent_http_request_response}\n")
 
-    weather_agent_result = weather_agent(
-        "What is the current weather in Shenzhen?"
+    orchestrator = Agent(
+        model=bedrock_model,
+        system_prompt=(
+            "You are a helpful assistant that can coordinate multiple agents. "
+            "You can call different agents to answer questions about weather, cooking, and code generation. "
+            "Use your knowledge to provide accurate and helpful responses."
+        ),
+        callback_handler=None,
+        tools=[
+            weather_assistant,
+            chef_assistant,
+            code_generator_assistant
+        ]
     )
-    print(f"weather_agent_result = {weather_agent_result}\n")
 
-
-def chef_agent_func():
-    chef_agent_result = chef_agent("What is a good recipe for chicken curry?")
-    print(f"chef_agent_result = {chef_agent_result}\n")
-
-
-def code_generator_agent_func():
-    code_generator_agent_result = code_generator_agent(
-        "How to write a Python function to solve this question: A car travels at 90 km/h for 2 hours, then at 60 km/h for another 3 hours. What is the average speed of the car for the entire journey?")
-    print(f"code_generator_agent_result = {code_generator_agent_result}\n")
+    query = "What is the weather like in China Shenzhen? Can you suggest a chinese recipe for dinner? Also, can you help me generate a Python code snippet to fetch weather data?"
+    response = orchestrator(query)
+    print(f"orchestrator response = {response}\n")
 
 
 main()
