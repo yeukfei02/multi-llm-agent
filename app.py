@@ -32,7 +32,7 @@ def main():
 
     query = "What is the weather like in China Shenzhen? Can you suggest a chinese recipe for dinner? Also, can you help me generate a Python code snippet to fetch weather data?"
     response = orchestrator(query)
-    print(f"orchestrator response = {response}\n")
+    print(f"\n orchestrator response = {response}")
 
 
 main()
