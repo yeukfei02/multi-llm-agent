@@ -12,11 +12,9 @@ def weather_assistant(query: str) -> str:
         url=f"https://api.openweathermap.org/data/2.5/weather?q={query}&appid={OPEN_WEATHER_API_KEY}"
     )
     print(
-        f"weather_agent_http_request_response = {weather_agent_http_request_response}\n")
+        f"\n weather_agent_http_request_response = {weather_agent_http_request_response}")
 
-    weather_agent_result = weather_agent(
-        f"What is the current weather in {query}?"
-    )
-    print(f"weather_agent_result = {weather_agent_result}\n")
+    weather_agent_result = weather_agent(query)
+    print(f"\n weather_agent_result = {weather_agent_result}")
 
     return str(weather_agent_result)
