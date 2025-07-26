@@ -8,7 +8,6 @@ def weather_assistant(query: str) -> str:
 
     try:
         weather_agent_result = weather_agent(query)
-        print(f"\n weather_agent_result = {weather_agent_result}")
 
         result = weather_agent_result
     except Exception as e:
