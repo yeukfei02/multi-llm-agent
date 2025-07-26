@@ -4,7 +4,14 @@ from src.agents.chef_agent import chef_agent
 
 @tool
 def chef_assistant(query: str) -> str:
-    chef_agent_result = chef_agent(query)
-    print(f"\n chef_agent_result = {chef_agent_result}")
+    result = None
 
-    return str(chef_agent_result)
+    try:
+        chef_agent_result = chef_agent(query)
+        print(f"\n chef_agent_result = {chef_agent_result}")
+
+        result = chef_agent_result
+    except Exception as e:
+        print(f"chef_assistant error = {e}")
+
+    return str(result)
