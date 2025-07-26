@@ -30,9 +30,17 @@ def main():
         ]
     )
 
-    query = "What is the weather like in China Shenzhen? Can you suggest a chinese recipe for dinner? Also, can you help me generate a Python code snippet to fetch weather data?"
+    query = "What is the weather now in China, Shenzhen?"
     response = orchestrator(query)
     print(f"\n orchestrator response = {response}")
+
+    query = "Can you suggest a chinese food or recipe for dinner?"
+    response = orchestrator(query)
+    print(f"\n orchestrator2 response = {response}")
+
+    query = "Can you help me generate a Python code snippet of this problem? A car travels at 80 km/h for 2 hours and then at 60 km/h for 1 hour. What is the total distance traveled?"
+    response = orchestrator(query)
+    print(f"\n orchestrator3 response = {response}")
 
 
 main()

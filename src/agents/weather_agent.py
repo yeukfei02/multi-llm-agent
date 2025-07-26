@@ -1,6 +1,5 @@
 from strands import Agent
 from strands.models import BedrockModel
-from strands_tools import http_request
 
 
 bedrock_model = BedrockModel(
@@ -16,5 +15,5 @@ weather_agent = Agent(
         "You can answer questions about current weather conditions, forecasts, and related topics. "
         "Use your knowledge to provide accurate and helpful responses."
     ),
-    tools=[http_request],
+    tools=[],
 )
