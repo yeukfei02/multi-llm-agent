@@ -8,8 +8,6 @@ def code_generator_assistant(query: str) -> str:
 
     try:
         code_generator_agent_result = code_generator_agent(query)
-        print(
-            f"\n code_generator_agent_result = {code_generator_agent_result}")
 
         result = code_generator_agent_result
     except Exception as e:

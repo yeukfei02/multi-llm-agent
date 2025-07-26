@@ -8,7 +8,6 @@ def chef_assistant(query: str) -> str:
 
     try:
         chef_agent_result = chef_agent(query)
-        print(f"\n chef_agent_result = {chef_agent_result}")
 
         result = chef_agent_result
     except Exception as e:

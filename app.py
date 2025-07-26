@@ -32,15 +32,15 @@ def main():
 
     query = "What is the weather now in China, Shenzhen?"
     response = orchestrator(query)
-    print(f"\n orchestrator response = {response}")
+    print(f"orchestrator response = {response}\n")
 
-    query = "Can you suggest a chinese food or recipe for dinner?"
+    query = "Can you suggest a chinese food and its recipe for dinner?"
     response = orchestrator(query)
-    print(f"\n orchestrator2 response = {response}")
+    print(f"orchestrator2 response = {response}\n")
 
     query = "Can you help me generate a Python code snippet of this problem? A car travels at 80 km/h for 2 hours and then at 60 km/h for 1 hour. What is the total distance traveled?"
     response = orchestrator(query)
-    print(f"\n orchestrator3 response = {response}")
+    print(f"orchestrator3 response = {response}\n")
 
 
 main()
