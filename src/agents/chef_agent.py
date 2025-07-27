@@ -3,9 +3,9 @@ from strands.models import BedrockModel
 
 
 bedrock_model = BedrockModel(
-    model_id="meta.llama3-70b-instruct-v1:0",
+    model_id="us.meta.llama3-1-70b-instruct-v1:0",
     region_name="us-east-1",
-    temperature=0.3,
+    temperature=0.5,
 )
 
 chef_agent = Agent(
