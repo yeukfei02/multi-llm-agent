@@ -10,9 +10,9 @@ load_dotenv()
 
 def main():
     bedrock_model = BedrockModel(
-        model_id="us.amazon.nova-lite-v1:0",
+        model_id="amazon.nova-micro-v1:0",
         region_name="us-east-1",
-        temperature=0.3,
+        temperature=0.5,
     )
 
     orchestrator = Agent(

@@ -3,9 +3,9 @@ from strands.models import BedrockModel
 
 
 bedrock_model = BedrockModel(
-    model_id="us.deepseek.r1-v1:0",
+    model_id="deepseek.r1-v1:0",
     region_name="us-east-1",
-    temperature=0.3,
+    temperature=0.5,
 )
 
 code_generator_agent = Agent(
